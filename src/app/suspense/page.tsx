@@ -4,10 +4,8 @@ import { Blog } from "./blog";
 import { BlogPromiseProps } from "./blog-props";
 import { BlogUse } from "./blog-use";
 
-export const revalidate = 0;
-
 export default async function StaticPage() {
-  const data = getList();
+  const data = getList({ next: { revalidate: 0 } });
 
   // Get the time the page was generated
   const time = new Date().toLocaleString();

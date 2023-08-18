@@ -3,10 +3,8 @@ import parse from "html-react-parser";
 import { getDetail, getList } from "../../../libs/microcms";
 
 // Do not use caching
-export const revalidate = 60;
-
 export async function generateStaticParams() {
-  const { contents } = await getList();
+  const { contents } = await getList({ next: { revalidate: 0 } });
 
   const paths = contents.map((post) => {
     return {

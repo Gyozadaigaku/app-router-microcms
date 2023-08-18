@@ -3,6 +3,7 @@ import type {
   MicroCMSQueries,
   MicroCMSImage,
   MicroCMSDate,
+  CustomRequestInit,
 } from "microcms-js-sdk";
 
 export type Blog = {
@@ -26,8 +27,12 @@ export const client = createClient({
 });
 
 // Get a list of blog posts
-export const getList = async (queries?: MicroCMSQueries) => {
+export const getList = async (
+  customRequestInit?: CustomRequestInit,
+  queries?: MicroCMSQueries
+) => {
   const listData = await client.getList<Blog>({
+    customRequestInit,
     endpoint: "blogs",
     queries,
   });
