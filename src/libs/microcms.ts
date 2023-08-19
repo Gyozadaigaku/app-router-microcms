@@ -67,7 +67,7 @@ export const getArticleDraft = async (
 ) => {
   return await client
     .get<Article>({
-      endpoint: "article",
+      endpoint: "articles",
       contentId,
       queries,
       customRequestInit: { cache: "no-store" },
