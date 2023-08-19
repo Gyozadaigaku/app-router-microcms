@@ -63,13 +63,16 @@ export const getArticle = async (
 
 export const getArticleDraft = async (
   contentId: string,
-  queries: MicroCMSQueries & { draftKey: string }
+  { draftKey, ...queries }: MicroCMSQueries
 ) => {
   return await client
     .get<Article>({
       endpoint: "articles",
       contentId,
-      queries,
+      queries: {
+        draftKey,
+        ...queries,
+      },
       customRequestInit: { cache: "no-store" },
     })
     .catch(() => {
