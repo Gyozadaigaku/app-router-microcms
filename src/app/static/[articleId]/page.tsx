@@ -4,7 +4,7 @@ import {
   getArticle,
   getArticles,
 } from "../../../libs/microcms";
-import { ArticleDetail } from "@/components/ArticleDetail/ArticleDetail";
+import { ArticleDetail } from "@/components/ArticleDetail";
 
 type Props = {
   params: { articleId: string };

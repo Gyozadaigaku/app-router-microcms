@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { generateArticleMetadata, getArticleDraft } from "@/libs/microcms";
-import { ArticleDetail } from "@/components/ArticleDetail/ArticleDetail";
+import { ArticleDetail } from "@/components/ArticleDetail";
 
 type Props = {
   params: { articleId: string };
