@@ -1,0 +1,18 @@
+.main {
+padding: 20px 12px;
+}
+
+@media screen and (min-width:768px) {
+  .main {
+    padding: 32px 72px;
+    max-width: 1060px;
+    margin: auto;
+  }
+}
+
+/* @media (max-width: 640px) {
+  .main {
+    width: auto;
+    padding: 24px;
+  }
+} */
