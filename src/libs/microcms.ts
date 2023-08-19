@@ -5,6 +5,7 @@ import type {
   MicroCMSDate,
   CustomRequestInit,
 } from "microcms-js-sdk";
+import { Metadata } from "next";
 
 export type Article = {
   id: string;
@@ -58,4 +59,37 @@ export const getArticle = async (
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return detailData;
+};
+
+export const getArticleDraft = async (
+  contentId: string,
+  queries: MicroCMSQueries & { draftKey: string }
+) => {
+  return await client
+    .get<Article>({
+      endpoint: "article",
+      contentId,
+      queries,
+      customRequestInit: { cache: "no-store" },
+    })
+    .catch(() => {
+      return null;
+    });
+};
+
+export const generateArticleMetadata = async (
+  articleId: string,
+  draftKey?: string | string[]
+): Promise<Metadata | void> => {
+  let article: Article | null = null;
+  const isDraft = typeof draftKey === "string";
+  if (isDraft) {
+    article = await getArticleDraft(articleId, { draftKey });
+  } else {
+    article = await getArticle(articleId);
+  }
+  if (article) {
+    const { title } = article;
+    return { title: isDraft ? `[プレビュー] ${title}` : title };
+  }
 };

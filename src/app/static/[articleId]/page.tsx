@@ -1,7 +1,14 @@
 import { notFound } from "next/navigation";
-import parse from "html-react-parser";
-import { getArticle, getArticles } from "../../../libs/microcms";
+import {
+  generateArticleMetadata,
+  getArticle,
+  getArticles,
+} from "../../../libs/microcms";
 import { ArticleDetail } from "@/components/ArticleDetail";
+
+type Props = {
+  params: { articleId: string };
+};
 
 export async function generateStaticParams() {
   const { contents } = await getArticles();
@@ -13,6 +20,10 @@ export async function generateStaticParams() {
   });
 
   return [...paths];
+}
+
+export async function generateMetadata({ params: { articleId } }: Props) {
+  return await generateArticleMetadata(articleId);
 }
 
 export default async function StaticDetailPage({
