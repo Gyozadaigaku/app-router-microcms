@@ -12,7 +12,15 @@ export const ArticleDetail = async ({ article }: ArticleDetailProps) => {
     <div>
       <h1>{article.title}</h1>
       <h2>{time}</h2>
-      <div>{parse(article.content)}</div>
+      {/* TODO: Use `html-react-parser` instead of `dangerouslySetInnerHTML` in the future */}
+      {article.content.map((item, index) => (
+        <div key={index}>
+          {item.richEditor && (
+            <div dangerouslySetInnerHTML={{ __html: item.richEditor }} />
+          )}
+          {item.html && <div dangerouslySetInnerHTML={{ __html: item.html }} />}
+        </div>
+      ))}
     </div>
   );
 };

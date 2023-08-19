@@ -7,10 +7,16 @@ import type {
 } from "microcms-js-sdk";
 import { Metadata } from "next";
 
+type ContentItem = {
+  fieldId: string;
+  richEditor?: string;
+  html?: string;
+};
+
 export type Article = {
   id: string;
   title: string;
-  content: string;
+  content: ContentItem[];
   eyecatch?: MicroCMSImage;
 } & MicroCMSDate;
 
