@@ -6,7 +6,7 @@ import type {
   CustomRequestInit,
 } from "microcms-js-sdk";
 
-export type Blog = {
+export type Article = {
   id: string;
   title: string;
   content: string;
@@ -26,14 +26,14 @@ export const client = createClient({
   apiKey: process.env.MICROCMS_API_KEY,
 });
 
-// Get a list of blog posts
-export const getList = async (
+// Get a list of articles posts
+export const getArticles = async (
   customRequestInit?: CustomRequestInit,
   queries?: MicroCMSQueries
 ) => {
-  const listData = await client.getList<Blog>({
+  const listData = await client.getList<Article>({
     customRequestInit,
-    endpoint: "blogs",
+    endpoint: "articles",
     queries,
   });
 
@@ -43,13 +43,13 @@ export const getList = async (
   return listData;
 };
 
-// Get the details of a specific blog post
-export const getDetail = async (
+// Get the details of a specific article post
+export const getArticle = async (
   contentId: string,
   queries?: MicroCMSQueries
 ) => {
-  const detailData = await client.getListDetail<Blog>({
-    endpoint: "blogs",
+  const detailData = await client.getListDetail<Article>({
+    endpoint: "articles",
     contentId,
     queries,
   });

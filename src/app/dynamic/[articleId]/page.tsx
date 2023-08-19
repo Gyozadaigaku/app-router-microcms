@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation";
 import parse from "html-react-parser";
-import { getDetail, getList } from "../../../libs/microcms";
+import { getArticle, getArticles } from "../../../libs/microcms";
 
 // Do not use caching
 export async function generateStaticParams() {
-  const { contents } = await getList({ next: { revalidate: 0 } });
+  const { contents } = await getArticles({ next: { revalidate: 0 } });
 
   const paths = contents.map((post) => {
     return {
-      postId: post.id,
+      articleId: post.id,
     };
   });
 
@@ -16,11 +16,11 @@ export async function generateStaticParams() {
 }
 
 export default async function StaticDetailPage({
-  params: { postId },
+  params: { articleId },
 }: {
-  params: { postId: string };
+  params: { articleId: string };
 }) {
-  const post = await getDetail(postId);
+  const post = await getArticle(articleId);
 
   // Get the time the page was generated
   const time = new Date().toLocaleString();

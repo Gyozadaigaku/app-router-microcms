@@ -1,11 +1,11 @@
 import { Suspense } from "react";
-import { getList } from "../../libs/microcms";
-import { Blog } from "./blog";
-import { BlogPromiseProps } from "./blog-props";
-import { BlogUse } from "./blog-use";
+import { getArticles } from "../../libs/microcms";
+import { Article } from "./article";
+import { ArticlePromiseProps } from "./article-props";
+import { ArticleUse } from "./article-use";
 
 export default async function StaticPage() {
-  const data = getList({ next: { revalidate: 0 } });
+  const data = getArticles({ next: { revalidate: 0 } });
 
   // Get the time the page was generated
   const time = new Date().toLocaleString();
@@ -19,17 +19,17 @@ export default async function StaticPage() {
       <h1>{time}</h1>
       <h2>非同期コンポーネント</h2>
       <Suspense fallback={<div>loading...</div>}>
-        <Blog />
+        <Article />
       </Suspense>
       <hr />
       <h2>PromiseをPropsで渡す場合</h2>
       <Suspense fallback={<div>loading...</div>}>
-        <BlogPromiseProps promise={data} />
+        <ArticlePromiseProps promise={data} />
       </Suspense>
       <hr />
       <h2>React.use()を利用</h2>
       <Suspense fallback={<div>loading...</div>}>
-        <BlogUse />
+        <ArticleUse />
       </Suspense>
     </div>
   );

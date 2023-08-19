@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { getList } from "../../libs/microcms";
+import { getArticles } from "../../libs/microcms";
 
 // Do not use caching
 export default async function StaticPage() {
-  const { contents } = await getList({ next: { revalidate: 0 } });
+  const { contents } = await getArticles({ next: { revalidate: 0 } });
 
   // Get the time the page was generated
   const time = new Date().toLocaleString();

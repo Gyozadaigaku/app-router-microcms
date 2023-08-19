@@ -1,7 +1,8 @@
-import { getList } from "../../libs/microcms";
+import { use } from "react";
+import { getArticles } from "../../libs/microcms";
 
-export async function Blog() {
-  const { contents } = await getList();
+export function ArticleUse() {
+  const { contents } = use(getArticles());
 
   if (!contents || contents.length === 0) {
     return <h1>No contents</h1>;
