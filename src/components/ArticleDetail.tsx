@@ -7,11 +7,9 @@ interface ArticleDetailProps {
 
 export const ArticleDetail = async ({ article }: ArticleDetailProps) => {
   // Get the time the page was generated.
-  const time = new Date().toLocaleString();
   return (
     <div>
       <h1>{article.title}</h1>
-      <h2>{time}</h2>
       {/* TODO: Use `html-react-parser` instead of `dangerouslySetInnerHTML` in the future */}
       {article.content.map((item, index) => (
         <div key={index}>
