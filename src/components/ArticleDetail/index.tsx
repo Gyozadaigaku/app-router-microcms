@@ -1,6 +1,6 @@
 import { Article } from "@/libs/microcms";
 import parse from "html-react-parser";
-import styles from "./index.module.css";
+import "./index.css";
 
 type ArticleDetailProps = {
   article: Article;
@@ -11,7 +11,7 @@ export const ArticleDetail = async ({ article }: ArticleDetailProps) => {
     <>
       {/* TODO: Use `html-react-parser` instead of `dangerouslySetInnerHTML` in the future */}
       <h1
-        className={styles.title}
+        className="title"
         dangerouslySetInnerHTML={{ __html: article.title }}
       />
       {article.content.map((item, index) => (
