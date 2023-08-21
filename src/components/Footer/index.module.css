@@ -2,10 +2,18 @@
   padding: 14px 24px;
   text-align: center;
   color: white;
-  font-size: 12px;
   background: #34487e;
 }
 
+.footer p {
+  margin: 0;
+}
+
+.footer p,
+.footer a {
+  font-size: 12px;
+}
+
 .spacer {
-  padding: 4px 0;
+  padding: 0;
 }

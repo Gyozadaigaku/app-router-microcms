@@ -4,6 +4,22 @@
   font-weight: bold;
 }
 
+p {
+  font-size: 18px;
+  margin: 32px 0;
+  line-height: 2;
+}
+
+figure {
+  margin: 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+  p {
+    font-size: 15px;
+  }
+}
+
 p > span.yellowMarker {
   font-weight: bold;
   background: linear-gradient(
@@ -11,4 +27,20 @@ p > span.yellowMarker {
     #fcff52 60% 90%,
     transparent 90%
   );
+}
+
+p > span.textRed {
+  color: #ff4e46;
+}
+
+p > span.textGray {
+  color: gray;
+}
+
+p > span.textSmall {
+  font-size: 85%;
+}
+
+p > span.textLarge {
+  font-size: 150%;
 }

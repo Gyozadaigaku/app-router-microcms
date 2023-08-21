@@ -1,18 +1,12 @@
 .main {
-padding: 20px 12px;
+  padding: 32px 12px;
+  background: white;
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .main {
-    padding: 32px 72px;
+    padding: 44px 72px;
     max-width: 1060px;
-    margin: auto;
+    margin: 22px auto;
   }
 }
-
-/* @media (max-width: 640px) {
-  .main {
-    width: auto;
-    padding: 24px;
-  }
-} */
